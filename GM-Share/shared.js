@@ -28,3 +28,25 @@ function runXPath(docNode, xpath) {
     return results;
 }
 
+//  wrap element inner HTML
+function wrapElemInnerHTML(name, content, attrObj) {
+    var result = [];
+    result.push("<");
+    result.push(name);
+    for (var key in attrObj) {
+        if (attrObj.hasOwnProperty(key)) {
+            result.push(" ");
+            result.push(key);
+            result.push("=\"");
+            result.push(attrObj[key]);
+            result.push("\"");
+        }
+    }
+    result.push(">");
+    result.push(content);
+    result.push("</");
+    result.push(name);
+    result.push(">");
+    return result.join("");
+}
+
